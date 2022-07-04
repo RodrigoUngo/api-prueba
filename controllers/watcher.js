@@ -46,7 +46,7 @@ const WatcherModel = require("../models/watcher");
     }
   };
   
-  exports.updateDoctor = async (req, res, next) => {
+  exports.updateWatcher = async (req, res, next) => {
     try {
       // TODO: Requiere validation
       // What word update?
@@ -78,7 +78,7 @@ const WatcherModel = require("../models/watcher");
     }
   };
   
-  exports.deleteDoctor = async (req, res, next) => {
+  exports.deleteWatcher = async (req, res, next) => {
     try {
       let email = req.params.email;
       let { deletedCount } = await WatcherModel.deleteOne({ email });
