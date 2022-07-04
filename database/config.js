@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
-var debug = require('debug')('dummyDictionary:server');
+var debug = require('debug')('remeMed:server');
 
 mongoose
-  .connect(process.env.MONGO_URI || "mongodb://localhost:27017/dummyDictionary")
+  .connect(process.env.MONGO_URI || "mongodb://localhost:27017/remeMed")
   .then(
     () => {
       debug("Database connected ");
