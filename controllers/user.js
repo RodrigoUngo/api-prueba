@@ -38,7 +38,7 @@ exports.createUser = async (req, res, next) => {
       lastName,
       password,
     });
-    newUser.password = null;
+    //newUser.password = null;
     res.send({ newUser });
   } catch (err) {
     next(err);
