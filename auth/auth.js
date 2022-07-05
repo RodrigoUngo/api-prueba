@@ -8,6 +8,8 @@ passport.use(
     {
       secretOrKey: process.env.JWT_SECRET || "TOP_SECRET",
       jwtFromRequest: ExtractJWT.fromExtractors([
+        ExtractJWT.fromUrlQueryParameter("secret_token"),
+        ExtractJWT.fromHeader("secret_token"),
         ExtractJWT.fromAuthHeaderAsBearerToken(),
       ]),
     },
