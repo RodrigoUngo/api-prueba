@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
-const WatcherSchema = new Schema(
+const ManagerSchema = new Schema(
   {
     name: {
       type: String,
@@ -21,7 +21,7 @@ const WatcherSchema = new Schema(
   { timestamps: true }
 );
 
-const WatcherModel = mongoose.model("watcher", WatcherSchema);
+const ManagerModel = mongoose.model("manager", ManagerSchema);
 
-module.exports = WatcherModel;
-module.exports = WatcherModel;
+module.exports = ManagerModel;
+module.exports = ManagerModel;

@@ -6,7 +6,8 @@ const helmet = require("helmet");
 require('./database/config');
 const userRouter = require("./routers/user");
 const doctorRouter = require("./routers/doctor");
-const watcherRouter = require("./routers/watcher")
+const managerRouter = require("./routers/manager");
+const symptomsRouter = require("./routers/symptoms");
 const passport = require("passport");
 //require("./auth/auth");
 const authRouter = require('./routers/auth');
@@ -22,6 +23,7 @@ app.use(authRouter);
 //app.use(passport.authenticate("jwt", { session: false }))
 app.use("/users", userRouter);
 app.use("/doctors", doctorRouter);
-app.use("/watchers", watcherRouter);
+app.use("/managers", managerRouter);
+app.use("/symptoms", symptomsRouter);
 
 module.exports = app;
