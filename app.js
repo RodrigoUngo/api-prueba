@@ -8,6 +8,7 @@ const userRouter = require("./routers/user");
 const doctorRouter = require("./routers/doctor");
 const managerRouter = require("./routers/manager");
 const symptomsRouter = require("./routers/symptoms");
+const prescriptionRouter = require("./routers/prescription");
 const passport = require("passport");
 //require("./auth/auth");
 const authRouter = require('./routers/auth');
@@ -25,5 +26,6 @@ app.use("/users", userRouter);
 app.use("/doctors", doctorRouter);
 app.use("/managers", managerRouter);
 app.use("/symptoms", symptomsRouter);
+app.use("/prescriptions", prescriptionRouter);
 
 module.exports = app;
