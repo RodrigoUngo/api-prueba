@@ -39,7 +39,7 @@ const SymptomModel = require("../models/symptoms");
   exports.deleteSymptom = async (req, res, next) => {
     try {
       let _id = req.params._id;
-      let { deletedCount } = await ManagerModel.deleteOne({ _id });
+      let { deletedCount } = await SymptomModel.deleteOne({ _id });
       if (deletedCount == 1) {
         return res.send({
           message: "successfully deleted",
