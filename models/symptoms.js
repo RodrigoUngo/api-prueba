@@ -11,6 +11,10 @@ const SymptomSchema = new Schema(
       type: String,
       required: "Text cant be null",
     },
+    user: {
+      type: String,
+      required: "User cant be null",
+    },
   },
   { timestamps: true }
 );

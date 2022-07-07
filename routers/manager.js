@@ -1,6 +1,6 @@
 var {
     getAll,
-    getManager,
+    getManagers,
     createManager,
     updateManager,
     deleteManager,
@@ -9,7 +9,7 @@ var {
   var router = express.Router();
   
   router.get("/", getAll);
-  router.get("/:email", getManager);
+  router.get("/:user", getManagers);
   router.post("/", createManager);
   router.put("/:email", updateManager);
   router.delete("/:email", deleteManager);

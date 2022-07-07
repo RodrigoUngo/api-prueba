@@ -17,6 +17,10 @@ const ManagerSchema = new Schema(
       required: true,
       unique: "Phone number cant be null",
     },
+    user: {
+      type: String,
+      required: "User cant be null",
+    },
   },
   { timestamps: true }
 );

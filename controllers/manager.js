@@ -20,16 +20,14 @@ const ManagerModel = require("../models/manager");
  * Get word by
  * TODO: Add pagination feature
  */
- exports.getManager = async (req, res, next) => {
+ exports.getManagers = async (req, res, next) => {
     try {
-      let email = req.params.email;
-      let manager = await ManagerModel.findOne({ email });
-      if (!manager) {
-        return res.status(404).send({
-          message: "Manager not found",
-        });
-      }
-      res.send({ manager });
+      let user = req.params.user;
+      let managers = await ManagerModel.find({user});
+      res.send({
+        count: managers.length,
+        managers,
+      });
     } catch (err) {
       next(err);
     }
