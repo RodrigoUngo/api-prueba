@@ -21,6 +21,10 @@ const DoctorSchema = new Schema(
       type: String,
       required: "Hospital cant be null",
     },
+    user: {
+      type: String,
+      required: "User cant be null",
+    },
   },
   { timestamps: true }
 );

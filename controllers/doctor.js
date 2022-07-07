@@ -20,16 +20,14 @@ const DoctorModel = require("../models/doctor");
  * Get word by
  * TODO: Add pagination feature
  */
- exports.getDoctor = async (req, res, next) => {
+ exports.getDoctors = async (req, res, next) => {
     try {
-      let email = req.params.email;
-      let doctor = await DoctorModel.findOne({ email });
-      if (!doctor) {
-        return res.status(404).send({
-          message: "doctor not found",
-        });
-      }
-      res.send({ doctor });
+      let user = req.params.user;
+      let doctors = await DoctorModel.find({user})
+      res.send({
+        count: doctors.length,
+        doctors,
+      });
     } catch (err) {
       next(err);
     }
@@ -38,8 +36,8 @@ const DoctorModel = require("../models/doctor");
   exports.createDoctor = async (req, res, next) => {
     try {
       //TODO: Requiere validation
-      let { name, email, phone, hospital } = req.body;
-      let newDoctor = await DoctorModel.create({ name, email, phone, hospital });
+      let { name, email, phone, hospital, user } = req.body;
+      let newDoctor = await DoctorModel.create({ name, email, phone, hospital, user });
       res.send({ newDoctor });
     } catch (err) {
       next(err);
@@ -52,7 +50,7 @@ const DoctorModel = require("../models/doctor");
       // What word update?
       let doctorToUpdate = req.params.email;
       // New data
-      let { name, email, phone, hospital } = req.body;
+      let { name, email, phone, hospital, user } = req.body;
       let doctor = await DoctorModel.findOne({ email: doctorToUpdate });
       if(!doctor) return res.status(400).send({
         message: "Doctor to update not found"
@@ -62,6 +60,7 @@ const DoctorModel = require("../models/doctor");
       doctor.email = email;
       doctor.phone = phone;
       doctor.hospital = hospital;
+      doctor.user = user
       let updatedDoctor = await doctor.save();
       
       if (doctor == updatedDoctor) {ø

@@ -1,6 +1,6 @@
 var {
   getAll,
-  getDoctor,
+  getDoctors,
   createDoctor,
   updateDoctor,
   deleteDoctor,
@@ -9,7 +9,7 @@ var express = require("express");
 var router = express.Router();
 
 router.get("/", getAll);
-router.get("/:email", getDoctor);
+router.get("/:user", getDoctors);
 router.post("/", createDoctor);
 router.put("/:email", updateDoctor);
 router.delete("/:email", deleteDoctor);
