@@ -36,8 +36,8 @@ const ManagerModel = require("../models/manager");
   exports.createManager = async (req, res, next) => {
     try {
       //TODO: Requiere validation
-      let { name, email, phone } = req.body;
-      let newManager = await ManagerModel.create({ name, email, phone });
+      let { name, email, phone, user } = req.body;
+      let newManager = await ManagerModel.create({ name, email, phone, user });
       res.send({ newManager });
     } catch (err) {
       next(err);

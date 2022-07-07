@@ -28,8 +28,8 @@ const SymptomModel = require("../models/symptoms");
   exports.createSympton = async (req, res, next) => {
     try {
       //TODO: Requiere validation
-      let { date, text } = req.body;
-      let newSymptom = await SymptomModel.create({ date, text });
+      let { date, text, user } = req.body;
+      let newSymptom = await SymptomModel.create({ date, text, user });
       res.send({ newSymptom });
     } catch (err) {
       next(err);
