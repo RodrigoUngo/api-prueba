@@ -10,7 +10,6 @@ const managerRouter = require("./routers/manager");
 const symptomsRouter = require("./routers/symptoms");
 const prescriptionRouter = require("./routers/prescription");
 const passport = require("passport");
-//require("./auth/auth");
 const authRouter = require('./routers/auth');
 
 const app = express();
@@ -21,7 +20,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(authRouter);
-//app.use(passport.authenticate("jwt", { session: false }))
 app.use("/users", userRouter);
 app.use("/doctors", doctorRouter);
 app.use("/managers", managerRouter);

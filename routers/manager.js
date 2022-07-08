@@ -11,7 +11,7 @@ var {
   router.get("/", getAll);
   router.get("/:user", getManagers);
   router.post("/", createManager);
-  router.put("/:email", updateManager);
-  router.delete("/:email", deleteManager);
+  router.put("/:_id", updateManager);
+  router.delete("/:_id", deleteManager);
   
   module.exports = router;

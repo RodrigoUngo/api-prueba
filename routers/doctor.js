@@ -11,7 +11,7 @@ var {
   router.get("/", getAll);
   router.get("/:user", getDoctors);
   router.post("/", createDoctor);
-  router.put("/:email", updateDoctor);
-  router.delete("/:email", deleteDoctor);
+  router.put("/:_id", updateDoctor);
+  router.delete("/:_id", deleteDoctor);
 
   module.exports = router;

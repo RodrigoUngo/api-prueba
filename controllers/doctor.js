@@ -1,9 +1,5 @@
 const DoctorModel = require("../models/doctor");
 
-/**
- * Get all words
- * TODO: Add pagination feature
- */
  exports.getAll = async (req, res, next) => {
     try {
       let doctors = await DoctorModel.find({});
@@ -16,10 +12,6 @@ const DoctorModel = require("../models/doctor");
     }
   };
 
-/**
- * Get word by
- * TODO: Add pagination feature
- */
  exports.getDoctors = async (req, res, next) => {
     try {
       let user = req.params.user;
@@ -35,7 +27,6 @@ const DoctorModel = require("../models/doctor");
   
   exports.createDoctor = async (req, res, next) => {
     try {
-      //TODO: Requiere validation
       let { name, email, phone, hospital, user } = req.body;
       let newDoctor = await DoctorModel.create({ name, email, phone, hospital, user });
       res.send({ newDoctor });
@@ -46,12 +37,9 @@ const DoctorModel = require("../models/doctor");
   
   exports.updateDoctor = async (req, res, next) => {
     try {
-      // TODO: Requiere validation
-      // What word update?
-      let doctorToUpdate = req.params.email;
-      // New data
+      let doctorToUpdate = req.params._id;
       let { name, email, phone, hospital, user } = req.body;
-      let doctor = await DoctorModel.findOne({ email: doctorToUpdate });
+      let doctor = await DoctorModel.findOne({ _id: doctorToUpdate });
       if(!doctor) return res.status(400).send({
         message: "Doctor to update not found"
       })
@@ -79,8 +67,8 @@ const DoctorModel = require("../models/doctor");
   
   exports.deleteDoctor = async (req, res, next) => {
     try {
-      let email = req.params.email;
-      let { deletedCount } = await DoctorModel.deleteOne({ email });
+      let _id = req.params._id;
+      let { deletedCount } = await DoctorModel.deleteOne({ _id });
       if (deletedCount == 1) {
         return res.send({
           message: "successfully deleted",

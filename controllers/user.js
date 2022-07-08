@@ -29,7 +29,6 @@ exports.getUser = async (req, res, next) => {
 
 exports.createUser = async (req, res, next) => {
   try {
-    //TODO: Requiere validation
     let { username, name, lastName, email, password } = req.body;
     let newUser = await UserModel.create({
       username,
@@ -46,11 +45,8 @@ exports.createUser = async (req, res, next) => {
 
 exports.updateUser = async (req, res, next) => {
   try {
-    // TODO: Requiere validation
-    // What user?
     let usernameToUpdate = req.params.username;
-    // New data
-    let { username, name, lastName } = req.body; // TODO: Omit email and password, we need create a recovery strategic
+    let { username, name, lastName } = req.body;
     let user = await UserModel.findOne({ username: usernameToUpdate });
 
     if (!user)

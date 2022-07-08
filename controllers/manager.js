@@ -1,9 +1,5 @@
 const ManagerModel = require("../models/manager");
 
-/**
- * Get all words
- * TODO: Add pagination feature
- */
  exports.getAll = async (req, res, next) => {
     try {
       let managers = await ManagerModel.find({});
@@ -16,10 +12,6 @@ const ManagerModel = require("../models/manager");
     }
   };
 
-/**
- * Get word by
- * TODO: Add pagination feature
- */
  exports.getManagers = async (req, res, next) => {
     try {
       let user = req.params.user;
@@ -35,7 +27,6 @@ const ManagerModel = require("../models/manager");
   
   exports.createManager = async (req, res, next) => {
     try {
-      //TODO: Requiere validation
       let { name, email, phone, user } = req.body;
       let newManager = await ManagerModel.create({ name, email, phone, user });
       res.send({ newManager });
@@ -46,12 +37,9 @@ const ManagerModel = require("../models/manager");
   
   exports.updateManager = async (req, res, next) => {
     try {
-      // TODO: Requiere validation
-      // What word update?
-      let managerToUpdate = req.params.email;
-      // New data
+      let managerToUpdate = req.params._id;
       let { name, email, phone } = req.body;
-      let manager = await ManagerModel.findOne({ email: managerToUpdate });
+      let manager = await ManagerModel.findOne({ _id: managerToUpdate });
       if(!manager) return res.status(400).send({
         message: "Manager to update not found"
       })
@@ -78,8 +66,8 @@ const ManagerModel = require("../models/manager");
   
   exports.deleteManager = async (req, res, next) => {
     try {
-      let email = req.params.email;
-      let { deletedCount } = await ManagerModel.deleteOne({ email });
+      let _id = req.params._id;
+      let { deletedCount } = await ManagerModel.deleteOne({ _id });
       if (deletedCount == 1) {
         return res.send({
           message: "successfully deleted",
