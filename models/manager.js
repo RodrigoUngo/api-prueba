@@ -9,13 +9,11 @@ const ManagerSchema = new Schema(
     },
     email: {
       type: String,
-      required: true,
-      unique: "Email cant be null",
+      required: "Email cant be null",
     },
     phone: {
       type: String,
-      required: true,
-      unique: "Phone number cant be null",
+      required: "Phone number cant be null",
     },
     user: {
       type: String,
