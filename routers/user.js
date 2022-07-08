@@ -1,7 +1,6 @@
 var {
     getAllUsers,
     getUser,
-    createUser,
     updateUser,
     deleteUser,
   } = require("../controllers/user");
@@ -10,7 +9,6 @@ var {
   
   router.get("/", getAllUsers);
   router.get("/:username", getUser);
-  router.post("/", createUser);
   router.put("/:username", updateUser);
   router.delete("/:username", deleteUser);
   
